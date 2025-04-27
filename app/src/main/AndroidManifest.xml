@@ -16,7 +16,7 @@
         <!-- SplashActivity configurada como la actividad de inicio -->
         <activity
             android:name=".activities.SplashActivity"
-            android:exported="false"
+            android:exported="true"
             android:theme="@style/Theme.Films">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
