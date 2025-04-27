@@ -55,4 +55,7 @@ dependencies {
     implementation(libs.converter.gson)
     //picasso
     implementation(libs.picasso)
+
+    //para el gif inicial y el fade out
+    implementation (libs.android.gif.drawable)
 }
