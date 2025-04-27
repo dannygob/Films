@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.DetailActivity"
+    android:padding="16dp">
+
+    <!-- IMAGEN -->
+    <ImageView
+        android:id="@+id/movieImageView"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"/>
+
+    <!-- Nombre de la película -->
+    <TextView
+        android:id="@+id/moviesTitleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp"
+        android:text="@string/title"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <!-- Género-->
+    <TextView
+        android:id="@+id/moviesgenreTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="4dp"
+        android:paddingBottom="16dp"
+        android:text="@string/gender"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="14sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dp"
+        android:text="@string/movies_data"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/movieYearTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="4dp"
+        android:text="@string/year"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/moviesruntimetextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="4dp"
+        android:text="@string/duration"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/moviesdirectortextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="4dp"
+        android:text="@string/director"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/moviescountrytextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="4dp"
+        android:text="@string/country"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/moviesplottextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="4dp"
+        android:text="@string/sinopsis"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="14sp" />
+
+
+</LinearLayout>
