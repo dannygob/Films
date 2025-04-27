@@ -7,7 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.examenkotlinabril2025.databinding.ActivityDetailBinding
+import com.example.films.databinding.ActivityDetailBinding
 import com.example.proytectmine.data.Movie
 import com.example.proytectmine.data.MovieService
 import com.squareup.picasso.Picasso

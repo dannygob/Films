@@ -9,9 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.examenkotlinabril2025.activities.DetailActivity.Companion.EXTRA_MOVIE_ID
-import com.example.examenkotlinabril2025.adapters.MoviesAdapter
-import com.example.examenkotlinabril2025.databinding.ActivityMainBinding
+import com.example.films.activities.DetailActivity.Companion.EXTRA_MOVIE_ID
+import com.example.films.adapter.MoviesAdapter
+import com.example.films.databinding.ActivityMainBinding
 import com.example.films.R
 import com.example.proytectmine.data.MovieService
 import com.example.proytectmine.data.Movie
