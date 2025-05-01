@@ -3,11 +3,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="#FFFFFF">
+    >
 
-    <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/iconoSplash"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/animacion_inicio" />
+    <ImageSwitcher
+        android:id="@+id/item_movies"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:visibility="visible">
+
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/images_splash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="16dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/count"
+            android:visibility="visible" />
+    </ImageSwitcher>
+
+
 </FrameLayout>

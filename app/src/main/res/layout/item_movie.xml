@@ -11,7 +11,8 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:scaleType="centerCrop"
-        android:src="@drawable/ic_launcher_background"/>
+        android:src="@drawable/images_splash"
+        />
 
     <!-- Linear layout para el nombre y el año -->
     <LinearLayout
