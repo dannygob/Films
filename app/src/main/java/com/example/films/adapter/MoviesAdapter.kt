@@ -1,12 +1,12 @@
-package com.example.films.adapter
+package com.example.films.adapters
 
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
-import com.example.examenkotlinabril2025.databinding.ItemMovieBinding
-import com.example.proytectmine.data.Movie
+import com.example.films.databinding.ItemMovieBinding
+import com.example.films.data.Movie
 import com.squareup.picasso.Picasso
 
 class MoviesAdapter(

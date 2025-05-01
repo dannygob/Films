@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ExamenKotlinABRIL2025</string>
+    <string name="app_name">Films</string>
     <string name="movie_name">Title\'s Movie</string>
     <string name="movie_year">Year</string>
     <string name="title">Name Of Movie</string>
