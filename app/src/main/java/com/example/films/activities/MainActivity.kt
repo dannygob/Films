@@ -13,8 +13,8 @@ import com.example.films.activities.DetailActivity.Companion.EXTRA_MOVIE_ID
 import com.example.films.adapter.MoviesAdapter
 import com.example.films.databinding.ActivityMainBinding
 import com.example.films.R
-import com.example.proytectmine.data.MovieService
-import com.example.proytectmine.data.Movie
+import com.example.films.data.MovieService
+import com.example.films.data.Movie
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

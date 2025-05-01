@@ -7,9 +7,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.films.R
 import com.example.films.databinding.ActivityDetailBinding
-import com.example.proytectmine.data.Movie
-import com.example.proytectmine.data.MovieService
+import com.example.films.data.Movie
+import com.example.films.data.MovieService
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
