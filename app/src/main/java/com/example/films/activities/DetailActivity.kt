@@ -7,7 +7,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.films.R
 import com.example.films.databinding.ActivityDetailBinding
 import com.example.films.data.Movie
 import com.example.films.data.MovieService

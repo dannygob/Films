@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -13,31 +13,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Films"
-        tools:targetApi="31">
+        tools:targetApi="31" >
 
         <!-- SplashActivity configurada como la actividad de inicio -->
         <activity
             android:name=".activities.SplashActivity"
             android:exported="true"
-            android:theme="@style/Theme.Films">
-
+            android:theme="@style/Theme.Films" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
-        <!-- MainActivity configurada después de la SplashActivity -->
+        <!-- Actividad principal después de SplashActivity -->
         <activity
             android:name=".activities.MainActivity"
             android:exported="true" />
 
-        <!-- Otras actividades -->
+        <!-- Detalle de película -->
         <activity
             android:name=".activities.DetailActivity"
-            android:exported="false"
-            android:theme="@style/Theme.Films" />
+            android:exported="false" />
+
+        <!-- Otra actividad, si la necesitas -->
+        <activity
+            android:name=".movie.MainActivity"
+            android:exported="false" />
 
     </application>
 

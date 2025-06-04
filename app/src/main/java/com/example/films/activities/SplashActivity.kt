@@ -13,7 +13,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        val gifView = findViewById<GifImageView>(R.id.iconoSplash)
+        val gifView = findViewById<GifImageView>(R.id.images_splash)
         val gifDrawable = GifDrawable(resources, R.drawable.count)
 
         gifDrawable.loopCount = 1
