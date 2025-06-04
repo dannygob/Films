@@ -37,9 +37,9 @@
             android:exported="false" />
 
         <!-- Otra actividad, si la necesitas -->
-        <activity
-            android:name=".movie.MainActivity"
-            android:exported="false" />
+        <!--        <activity-->
+        <!--            android:name=".movie.MainActivity"-->
+        <!--            android:exported="false" />-->
 
     </application>
 

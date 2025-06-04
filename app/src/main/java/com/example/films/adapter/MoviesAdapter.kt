@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
-import com.example.films.databinding.ItemMovieBinding
 import com.example.films.data.Movie
+import com.example.films.databinding.ItemMovieBinding
 import com.squareup.picasso.Picasso
 
 class MoviesAdapter(
@@ -33,7 +33,6 @@ class MoviesAdapter(
 class MovieViewHolder(val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root) {
 
 
-
     fun render(movie: Movie) {
 
         binding.nameTextView.text = movie.title
@@ -42,8 +41,6 @@ class MovieViewHolder(val binding: ItemMovieBinding) : RecyclerView.ViewHolder(b
         Picasso.get()
             .load(movie.imageURL)
             .into(binding.movieImageView)
-
-
     }
 
 
