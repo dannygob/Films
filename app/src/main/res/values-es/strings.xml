@@ -8,4 +8,9 @@
     <string name="country">País</string>
     <string name="sinopsis">Sinopsis</string>
     <string name="director">Director</string>
+    <string name="year_format">Year: %s</string>
+    <string name="duration_format">Duration: %s</string>
+    <string name="director_format">Director: %s</string>
+    <string name="country_format">Country: %s</string>
+    <string name="action_search">Buscar</string>
 </resources>

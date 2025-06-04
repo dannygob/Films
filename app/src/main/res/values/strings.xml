@@ -11,6 +11,12 @@
     <string name="sinopsis">Synopsis</string>
     <string name="director">Director</string>
     <string name="duration" translatable="false">Duration</string>
+    <string name="year_format">Year: %s</string>
+    <string name="duration_format">Duration: %s</string>
+    <string name="director_format">Director: %s</string>
+    <string name="country_format">Country: %s</string>
+    <string name="action_search">Buscar</string>
+
 
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label" translatable="false">First Fragment</string>
@@ -55,5 +61,4 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
 
-    <string name="action_search" translatable="false">Search</string>
 </resources>

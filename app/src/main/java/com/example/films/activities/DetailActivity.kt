@@ -2,6 +2,7 @@ package com.example.films.activities
 
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -19,8 +20,8 @@ import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class DetailActivity : AppCompatActivity() {
 
+class DetailActivity : AppCompatActivity() {
     companion object {
         const val EXTRA_MOVIE_ID = "MOVIE_ID"
     }
@@ -34,61 +35,40 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Configurar Toolbar
-        setSupportActionBar(binding.toolbar)
-        supportActionBar?.apply {
-            setDisplayHomeAsUpEnabled(true) // Muestra el botón atrás
-            setHomeAsUpIndicator(R.drawable.ic_back) // Icono personalizado
-            title =
-                "" // O título que quieras, por ejemplo el nombre de la peli luego de cargar datos
-        }
-
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        val id = intent.getStringExtra(EXTRA_MOVIE_ID)
-        if (id != null) {
-            findMovieById(id)
+        // Configura Toolbar con flecha para atrás
+        //setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(true)
+
+        /*binding.toolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }*/
+
+        val id = intent.getStringExtra(EXTRA_MOVIE_ID) ?: ""
+
+        if (id.isNotEmpty()) {
+            findMoviesById(id)
         } else {
-            Toast.makeText(this, "No se recibió el ID de la película", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "No movie ID provided", Toast.LENGTH_SHORT).show()
             finish()
         }
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed() // Vuelve a la pantalla anterior
-        return true
-    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed() // Maneja el botón de retroceso
+                return true
+            }
 
-    private fun getRetrofit(): MovieService {
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://www.omdbapi.com/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-        return retrofit.create(MovieService::class.java)
-    }
-
-    private fun findMovieById(id: String) {
-        CoroutineScope(Dispatchers.IO).launch {
-            try {
-                val service = getRetrofit()
-                val result = service.findMoviesById(id)
-                movie = result
-                Log.i("DetailActivity", "Movie: $movie")
-
-                withContext(Dispatchers.Main) {
-                    loadData()
-                }
-            } catch (e: Exception) {
-                e.printStackTrace()
-                Log.e("DetailActivity", "Error: ${e.message}")
-                runOnUiThread {
-                    Toast.makeText(this@DetailActivity, "Error: ${e.message}", Toast.LENGTH_SHORT)
-                        .show()
-                }
+            else -> {
+                return super.onOptionsItemSelected(item)
             }
         }
     }
@@ -103,7 +83,37 @@ class DetailActivity : AppCompatActivity() {
         binding.moviescountrytextView.text = getString(R.string.country_format, movie.country)
         binding.moviesplottextView.text = movie.plot
 
-        // Opcional: Cambiar título Toolbar al nombre de la película
         supportActionBar?.title = movie.title
+    }
+
+    private fun getRetrofit(): MovieService {
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://www.omdbapi.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+        return retrofit.create(MovieService::class.java)
+    }
+
+    private fun findMoviesById(id: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val service = getRetrofit()
+                val result = service.findMoviesById(id)
+                Log.i("DetailActivity", "Response: $result")
+                movie = result
+
+                withContext(Dispatchers.Main) {
+                    loadData()
+                }
+
+            } catch (e: Exception) {
+                e.printStackTrace()
+                Log.e("DetailError", "Error: ${e.message}")
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(this@DetailActivity, "Error: ${e.message}", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            }
+        }
     }
 }
