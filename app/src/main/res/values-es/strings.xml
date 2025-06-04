@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Films</string>
-    <string name="movie_name">Title\'s Movie</string>
-    <string name="movie_year">Year</string>
-    <string name="title">Name Of Movie</string>
-    <string name="year">Year</string>
-    <string name="country">Country</string>
+    <string name="movie_name">Título de la película</string>
+    <string name="movie_year">Año</string>
+    <string name="title">Nombre de la película</string>
+    <string name="year">Año</string>
+    <string name="country">País</string>
     <string name="sinopsis">Sinopsis</string>
     <string name="director">Director</string>
 </resources>

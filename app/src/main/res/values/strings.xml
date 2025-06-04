@@ -1,23 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Films</string>
     <string name="movie_name">Title\'s Movie</string>
     <string name="movie_year">Year</string>
     <string name="title">Name Of Movie</string>
-    <string name="gender">Gender</string>
-    <string name="movies_data">"Movie's Information "</string>
+    <string name="gender" translatable="false">Gender</string>
+    <string name="movies_data" translatable="false">Movie\'s Information</string>
     <string name="year">Year</string>
     <string name="country">Country</string>
-    <string name="sinopsis">Sinopsis</string>
+    <string name="sinopsis">Synopsis</string>
     <string name="director">Director</string>
-    <string name="duration">Duration</string>
+    <string name="duration" translatable="false">Duration</string>
 
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="first_fragment_label" translatable="false">First Fragment</string>
+    <string name="second_fragment_label" translatable="false">Second Fragment</string>
+    <string name="next" translatable="false">Next</string>
+    <string name="previous" translatable="false">Previous</string>
 
-    <string name="lorem_ipsum">
+    <string name="lorem_ipsum" translatable="false">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
         volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
         dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
@@ -54,5 +55,5 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
 
-
+    <string name="action_search" translatable="false">Search</string>
 </resources>

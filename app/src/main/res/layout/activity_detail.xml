@@ -1,101 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/detail_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".activities.DetailActivity"
-    android:padding="16dp">
+    tools:context=".activities.DetailActivity">
 
-    <!-- IMAGEN -->
-    <ImageView
-        android:id="@+id/movieImageView"
+    <!-- Toolbar -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="350dp"/>
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:navigationIcon="@drawable/ic_back"
+        app:title=""
+        app:titleTextColor="@android:color/white" />
 
-    <!-- Nombre de la película -->
-    <TextView
-        android:id="@+id/moviesTitleTextView"
+    <!-- ScrollView para permitir scroll en pantallas pequeñas -->
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="16dp"
-        android:paddingBottom="8dp"
-        android:text="@string/title"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:padding="16dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <!-- Género-->
-    <TextView
-        android:id="@+id/moviesgenreTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:lineSpacingExtra="4dp"
-        android:paddingBottom="16dp"
-        android:text="@string/gender"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="14sp" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <!-- informacion de la pelicula-->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="8dp"
-        android:text="@string/movies_data"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+            <!-- Imagen de la película -->
+            <ImageView
+                android:id="@+id/movieImageView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:contentDescription="@string/movie_poster"
+                android:scaleType="centerCrop"
+                app:layout_constraintDimensionRatio="16:9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Año de estreno -->
+            <!-- Título -->
+            <TextView
+                android:id="@+id/moviesTitleTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/movieImageView" />
 
-    <TextView
-        android:id="@+id/movieYearTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:lineSpacingExtra="4dp"
-        android:text="@string/year"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="14sp" />
+            <!-- Género -->
+            <TextView
+                android:id="@+id/moviesgenreTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/moviesTitleTextView" />
 
-    <!-- Duracion-->
-    <TextView
-        android:id="@+id/moviesruntimetextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:lineSpacingExtra="4dp"
-        android:text="@string/duration"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="14sp" />
+            <!-- Sección info label -->
+            <TextView
+                android:id="@+id/label_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp"
+                android:text="@string/movies_data"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/moviesgenreTextView" />
 
-    <!-- Director-->
-    <TextView
-        android:id="@+id/moviesdirectortextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:lineSpacingExtra="4dp"
-        android:text="@string/director"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="14sp" />
+            <!-- Año -->
+            <TextView
+                android:id="@+id/movieYearTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_info" />
 
-    <!-- Pais-->
-    <TextView
-        android:id="@+id/moviescountrytextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:lineSpacingExtra="4dp"
-        android:text="@string/country"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="14sp" />
+            <!-- Duración -->
+            <TextView
+                android:id="@+id/moviesruntimetextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/movieYearTextView" />
 
-    <!-- Resumen-->
-    <TextView
-        android:id="@+id/moviesplottextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:lineSpacingExtra="4dp"
-        android:text="@string/sinopsis"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="14sp" />
+            <!-- Director -->
+            <TextView
+                android:id="@+id/moviesdirectortextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/moviesruntimetextView" />
 
+            <!-- País -->
+            <TextView
+                android:id="@+id/moviescountrytextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/moviesdirectortextView" />
 
-</LinearLayout>
+            <!-- Sinopsis -->
+            <TextView
+                android:id="@+id/moviesplottextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/moviescountrytextView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

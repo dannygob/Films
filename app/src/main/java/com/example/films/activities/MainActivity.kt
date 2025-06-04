@@ -3,18 +3,19 @@ package com.example.films.activities
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.films.activities.DetailActivity.Companion.EXTRA_MOVIE_ID
-import com.example.films.adapter.MoviesAdapter
-import com.example.films.databinding.ActivityMainBinding
 import com.example.films.R
-import com.example.films.data.MovieService
+import com.example.films.adapter.MoviesAdapter
 import com.example.films.data.Movie
+import com.example.films.data.MovieService
+import com.example.films.databinding.ActivityMainBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -26,13 +27,11 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: MoviesAdapter
-    var allMovies : List<Movie> = listOf()
+    private var allMovies: List<Movie> = emptyList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -43,52 +42,61 @@ class MainActivity : AppCompatActivity() {
         }
 
         adapter = MoviesAdapter(allMovies) { position ->
-
             val movie = allMovies[position]
-
+            // Lanzar DetailActivity pasando el id de la película
             val intent = Intent(this, DetailActivity::class.java)
-            intent.putExtra(EXTRA_MOVIE_ID, movie.id)
-            Toast.makeText(this, "IdMovie: ${movie.id}", Toast.LENGTH_SHORT).show()
+            intent.putExtra(DetailActivity.EXTRA_MOVIE_ID, movie.id)
             startActivity(intent)
         }
 
-        binding.mainRecyclerView.adapter = adapter
         binding.mainRecyclerView.layoutManager = LinearLayoutManager(this)
+        binding.mainRecyclerView.adapter = adapter
 
-        //findMoviesById("tt2380307")
+        // Carga inicial (opcional)
         findMoviesByName("matrix")
-
     }
 
-    fun getRetrofit(): MovieService {
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://www.omdbapi.com/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+        val searchItem = menu?.findItem(R.id.action_search)
+        val searchView = searchItem?.actionView as? SearchView
 
-        return retrofit.create(MovieService::class.java)
+        searchView?.queryHint = "Buscar película..."
+
+        searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                if (!query.isNullOrEmpty()) {
+                    findMoviesByName(query)
+                    searchView.clearFocus()
+                    searchItem.collapseActionView()
+                }
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                // No hacemos nada mientras se escribe
+                return false
+            }
+        })
+
+        return true
     }
-
-
 
     private fun findMoviesByName(name: String) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val service = getRetrofit()
                 val result = service.searchMoviesByTitle(name)
-                Log.i("MainActivity", "Response: $result")
                 allMovies = result.movies
 
                 withContext(Dispatchers.Main) {
-                    adapter.items = allMovies
-                    adapter.notifyDataSetChanged()
+                    adapter.updateMovies(allMovies)
                 }
 
             } catch (e: Exception) {
-                e.printStackTrace()
-                Log.i("MainActivity", "Error: ${e.message}")
-                runOnUiThread {
+                Log.e("MainActivity", "Error buscando películas", e)
+                withContext(Dispatchers.Main) {
                     Toast.makeText(this@MainActivity, "Error: ${e.message}", Toast.LENGTH_SHORT)
                         .show()
                 }
@@ -96,5 +104,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun getRetrofit(): MovieService {
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://www.omdbapi.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
 
+        return retrofit.create(MovieService::class.java)
+    }
 }
